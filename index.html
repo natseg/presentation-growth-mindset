@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Growth Mindset / Carol Dweck</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/theme/black.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+    :root {
+      --r-background-color: #111;
+      --r-main-font: 'Inter', system-ui, -apple-system, sans-serif;
+      --r-heading-font: 'Inter', system-ui, -apple-system, sans-serif;
+      --r-main-color: #e0e0e0;
+      --r-heading-color: #fff;
+      --r-link-color: #e05a6b;
+      --growth: #4ade80;
+      --fixed: #f87171;
+      --accent: #e05a6b;
+      --warm: #fbbf24;
+    }
+
+    .reveal { font-weight: 400; }
+    .reveal h1, .reveal h2, .reveal h3 { font-weight: 700; letter-spacing: -0.02em; }
+    .reveal h1 { font-size: 2.4em; }
+    .reveal h2 { font-size: 1.8em; }
+    .reveal h3 { font-size: 1.3em; }
+    .reveal p, .reveal li { font-size: 0.85em; line-height: 1.6; }
+    .reveal blockquote { border-left: 4px solid var(--accent); background: rgba(224,90,107,0.1); padding: 0.8em 1.2em; font-style: italic; border-radius: 0 8px 8px 0; }
+    .reveal blockquote p { font-size: 0.9em; }
+
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; text-align: left; }
+    .card { background: #1a1a2e; border-radius: 12px; padding: 1.2em 1.5em; box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    .card h3 { margin-top: 0; font-size: 1.1em; }
+    .card.fixed { border-top: 4px solid var(--fixed); }
+    .card.growth { border-top: 4px solid var(--growth); }
+    .card ul { margin: 0; padding-left: 1.2em; }
+    .card li { font-size: 0.75em; margin-bottom: 0.4em; }
+
+    .big-emoji { font-size: 3em; margin-bottom: 0.3em; }
+    .big-number { font-size: 4em; font-weight: 800; color: var(--accent); line-height: 1; }
+
+    .spiral-visual { display: flex; align-items: center; justify-content: center; gap: 0.5em; margin: 1em 0; flex-wrap: wrap; }
+    .spiral-step { background: var(--accent); color: #fff; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; font-weight: 600; text-align: center; line-height: 1.2; }
+    .spiral-arrow { font-size: 1.5em; color: #888; }
+    .spiral-step:nth-child(5n+1) { background: #a8293b; }
+    .spiral-step:nth-child(5n+3) { background: #1a6aa5; }
+    .spiral-step:nth-child(5n+5) { background: #0a6b35; }
+
+    .zone-diagram { display: flex; align-items: center; justify-content: center; gap: 0; margin: 1em auto; }
+    .zone { border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #fff; text-align: center; line-height: 1.3; }
+    .zone-panic { width: 280px; height: 280px; background: radial-gradient(circle, transparent 55%, rgba(231,76,60,0.2) 55%, rgba(231,76,60,0.3)); position: relative; }
+    .zone-stretch { width: 200px; height: 200px; background: radial-gradient(circle, transparent 50%, rgba(46,204,113,0.25) 50%, rgba(46,204,113,0.35)); position: absolute; }
+    .zone-comfort { width: 120px; height: 120px; background: rgba(52,152,219,0.2); position: absolute; font-size: 0.6em; }
+    .zone-container { position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
+    .zone-label { position: absolute; font-size: 0.65em; font-weight: 700; }
+    .zone-label.comfort-l { color: #60a5fa; }
+    .zone-label.stretch-l { color: #4ade80; }
+    .zone-label.panic-l { color: #f87171; }
+
+    .praise-example { background: #1a1a2e; border-radius: 12px; padding: 1em 1.5em; margin: 0.5em 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); text-align: left; }
+    .praise-example .label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.3em; }
+    .praise-example .label.person { color: var(--fixed); }
+    .praise-example .label.process { color: var(--growth); }
+    .praise-example .quote { font-size: 0.8em; }
+
+    .poll-container { margin: 1em 0; }
+    .poll-btn { display: inline-block; padding: 0.6em 1.5em; margin: 0.3em; border-radius: 8px; background: #1a1a2e; border: 2px solid #444; font-size: 0.7em; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+    .poll-btn:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+    .poll-btn.selected { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .story-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; margin: 1em 0; }
+    .story-card { background: #1a1a2e; border-radius: 12px; padding: 1.2em; box-shadow: 0 2px 12px rgba(0,0,0,0.4); text-align: left; transition: all 0.3s; border: 2px solid transparent; }
+    .story-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+    .story-card h4 { margin: 0 0 0.5em; font-size: 0.8em; }
+    .story-card p { font-size: 0.7em; margin: 0; color: #fff; }
+    .story-card.fixed-story { border-color: rgba(248,113,113,0.4); }
+    .story-card.growth-story { border-color: rgba(74,222,128,0.4); }
+
+    .reflect-prompt { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border-radius: 16px; padding: 1.5em 2em; margin: 1em 0; }
+    .reflect-prompt h3 { color: #fff; margin-top: 0; }
+    .reflect-prompt p { font-size: 0.85em; color: #fff; }
+
+    .timeline { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin: 1.5em 0; }
+    .timeline-item { text-align: center; flex: 1; position: relative; }
+    .timeline-item::after { content: ''; position: absolute; top: 20px; right: -50%; width: 100%; height: 2px; background: #444; z-index: 0; }
+    .timeline-item:last-child::after { display: none; }
+    .timeline-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5em; font-size: 0.8em; position: relative; z-index: 1; }
+    .timeline-text { font-size: 0.65em; line-height: 1.3; max-width: 140px; margin: 0 auto; }
+
+    .fragment.highlight-green.visible { color: var(--growth); }
+    .fragment.highlight-red.visible { color: var(--fixed); }
+
+    .card.growth h3 { margin-bottom: 0.3em; }
+
+    .slide-number { font-size: 12px !important; }
+
+    .reveal .controls { color: var(--accent); }
+    .reveal .progress { color: var(--accent); height: 3px; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    *:focus-visible { outline: 3px solid #fbbf24; outline-offset: 3px; border-radius: 4px; }
+    .reveal .controls button:focus-visible { outline: 3px solid #fbbf24; outline-offset: 2px; }
+    .poll-btn:focus-visible { border-color: #fbbf24; box-shadow: 0 0 0 3px rgba(251,191,36,0.4); outline: none; }
+    .story-card:focus-visible { border-color: #fbbf24; box-shadow: 0 0 0 3px rgba(251,191,36,0.4); outline: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal .slides section { transition: none !important; }
+      .story-card, .poll-btn { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- ============ SLIDE 1: TITLE ============ -->
+  <section>
+    <p class="big-emoji"><span role="img" aria-label="brain">🧠</span></p>
+    <h1>Growth Mindset</h1>
+    <p style="font-size:1.1em; color:#fff;">The science of how we learn, fail, and grow</p>
+    <p style="font-size:0.7em; color:#fff; margin-top:2em;">Based on the work of <strong>Carol Dweck</strong></p>
+  </section>
+
+  <!-- ============ SLIDE 2: OPENING ACTIVITY ============ -->
+  <section>
+    <h2>Let's start with you</h2>
+    <p style="font-size:0.85em;">Submit your answer anonymously:</p>
+    <div class="reflect-prompt" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin:0.8em 0;">
+      <p style="font-size:1em; margin:0; color:#fff;"><strong>"What's something you find difficult that gets in your way day to day?"</strong></p>
+    </div>
+    <div class="fragment">
+      <p style="font-size:0.7em; color:#fff;"><span role="img" aria-label="phone">📱</span> <a href="https://forms.gle/7vojmugCL5iSDih89">Submit your answer on Google Forms</a></p>
+      <p style="font-size:0.7em; color:#fff;">In person: write it on a piece of paper, scrunch it up</p>
+    </div>
+    <div class="fragment">
+      <p>We'll come back to these at the end.</p>
+    </div>
+    <aside class="notes">
+      <p>https://forms.gle/7vojmugCL5iSDih89</p>
+      <ul>
+        <li>In-person: two groups face each other, write on paper, throw across, other group reads.</li>
+        <li>Remote: use anonymous Google Form / Slido / Mentimeter.</li>
+        <li>Read 4-5 answers aloud. Don't comment or fix them yet — just let them land.</li>
+        <li>Say: "Hold on to these. We'll revisit them."</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 3: DWECK INTRO ============ -->
+  <section>
+    <h2>Carol Dweck</h2>
+    <div class="fragment">
+      <blockquote>
+        The view you adopt for yourself profoundly affects the way you lead your life.
+      </blockquote>
+    </div>
+    <div class="fragment">
+      <p style="font-size:0.75em; margin-top:1em;">Her core finding: <strong>what people believe about their abilities</strong> shapes whether they actually develop them.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>I don't know what your view on intelligence is, your own, others' and how it is structured, etc.</li>
+        <li>Professor of Psychology at Stanford University and a leading researcher on motivation and mindsets.</li>
+        <li>Her work focuses on why people succeed and how it is possible to foster their success.</li>
+        <li>In the context of education, she seeks to understand why some students give up in the face of failure, while others thrive.</li>
+        <li>Over the past three decades, her research has shown that the way students think about intelligence and their ability affects their motivation and achievement in school.</li>
+        <li>She has demonstrated that changing students' mindsets in certain ways can have a lasting impact.</li>
+      </ul>
+      
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 4: TWO MINDSETS ============ -->
+  <section>
+    <h2>Two mindsets</h2>
+    <div class="two-col">
+      <div class="card fixed fragment" data-fragment-index="1">
+        <h3 style="color:var(--fixed);"><span role="img" aria-label="locked">🔒</span> Fixed</h3>
+        <ul>
+          <li>"I'm just not a maths person"</li>
+          <li>Talent is innate</li>
+          <li>Effort = you're not smart enough</li>
+          <li>Avoids challenge</li>
+          <li>Feedback feels like judgement</li>
+        </ul>
+      </div>
+      <div class="card growth fragment" data-fragment-index="2">
+        <h3 style="color:var(--growth);"><span role="img" aria-label="seedling">🌱</span> Growth</h3>
+        <ul>
+          <li>"I can't do this <em>yet</em>"</li>
+          <li>Abilities are built</li>
+          <li>Effort = the path to mastery</li>
+          <li>Seeks challenge</li>
+          <li>Feedback is information</li>
+        </ul>
+      </div>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>These aren't personality types — we ALL have both, in different areas.</li>
+        <li>Key word from Dweck: "yet." That single word transforms a dead-end into a path.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 5: THE POWER OF YET ============ -->
+  <section>
+    <h2>The power of "yet"</h2>
+    <div class="story-container">
+      <div class="story-card fixed-story fragment">
+        <h4 style="color:var(--fixed);"><span role="img" aria-label="cross mark">❌</span> "I can't do this."</h4>
+        <p>Full stop. The story ends. Identity is fixed. The brain disengages.</p>
+      </div>
+      <div class="story-card growth-story fragment">
+        <h4 style="color:var(--growth);"><span role="img" aria-label="check mark">✅</span> "I can't do this <em>yet</em>."</h4>
+        <p>A path opens. The story continues. The brain stays curious.</p>
+      </div>
+    </div>
+    <div class="fragment" style="margin-top:1em;">
+      <p style="font-size:0.75em; color:#fff;">Dweck's studies with children showed that simply reframing with "yet" changed persistence, performance, and even brain activity.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>"Yet" is not just positive thinking — it shifts the brain from threat state to learning state.</li>
+        <li>Dweck measured this with EEG: kids hearing "yet" showed more activity in error-processing regions.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 6: THE STORY YOU TELL YOURSELF ============ -->
+  <section>
+    <h2>The story you tell yourself</h2>
+    <p style="font-size:0.8em;">Every experience gets a narrative. <strong>You're the author.</strong></p>
+    <div class="two-col fragment" style="margin-top:1em;">
+      <div>
+        <p style="font-size:0.7em; color:var(--fixed); font-weight:600;">Fixed narrative</p>
+        <p style="font-size:0.7em;">"I failed the test → I'm stupid → Why bother trying"</p>
+        <p style="font-size:0.7em;">"They got promoted, not me → I'm not good enough"</p>
+      </div>
+      <div>
+        <p style="font-size:0.7em; color:var(--growth); font-weight:600;">Growth narrative</p>
+        <p style="font-size:0.7em;">"I failed the test → What did I miss? → Next time I'll study differently"</p>
+        <p style="font-size:0.7em;">"They got promoted → What can I learn from their approach?"</p>
+      </div>
+    </div>
+    <div class="fragment" style="margin-top:1em;">
+      <p><strong>Same event. Different story. Different outcome.</strong></p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>This ties to cognitive behavioural therapy — the meaning we assign to events determines our emotional and behavioural response.</li>
+        <li>The growth mindset is essentially choosing a story that keeps you in the game.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 7: SPIRALLING LEARNING ============ -->
+  <section>
+    <h2>How we actually learn</h2>
+    <div class="spiral-visual fragment" style="display: flex; flex-direction: column; align-items: center; gap: 0.5em;">
+      <img src="./spiral-approach-curriculum-education-school-course-school-b324e6b2df933545df77b45fddc59dac.png" alt="Spiral curriculum diagram showing how learners revisit topics at increasing depth over time" style="width:200px; height:200px;" />
+    </div>
+    <div class="fragment" style="margin-top:0.8em;">
+      <div class="two-col" style="gap:1em;">
+        <div class="card fixed" style="padding:0.6em 1em;">
+          <h3 style="color:var(--fixed); font-size:0.75em; margin:0 0 0.3em;">Mass learning (cramming)</h3>
+          <p style="font-size:0.7em; margin:0; color:#fff;">One long session, everything at once. Feels productive, fades fast.</p>
+        </div>
+        <div class="card growth" style="padding:0.6em 1em;">
+          <h3 style="color:var(--growth); font-size:0.75em; margin:0 0 0.3em;">Spaced learning</h3>
+          <p style="font-size:0.7em; margin:0; color:#fff;">Shorter sessions, spread over time. Each return strengthens the spiral.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fragment">
+      <p style="font-size:0.75em; color:#fff; margin-top:0.8em;">The gaps between sessions are not wasted time: where consolidation happens.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>It's how anki and duolingo work: spaced repetition software leverages this principle.</li>
+        <li><br>Revisiting is not a sign of failure. It <strong>is</strong> the mechanism.</p></li>
+        <li>Bruner's spiral curriculum concept: you revisit topics at increasing depth.</li>
+        <li>Ebbinghaus's spacing effect (1885): distributed practice produces stronger long-term retention than massed practice.</li>
+        <li>This is why cramming works for an exam but not for lasting knowledge.</li>
+        <li>"I already learned this and still don't get it" is a fixed-mindset trap — you're supposed to revisit it.</li>
+        <li>Each return through the spiral builds on the last. The forgetting between sessions is part of the process: it forces the brain to actively reconstruct, which deepens the memory trace.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 8: THE ZONE ============ -->
+  <section>
+    <h2>Right-sized challenge</h2>
+    <p style="font-size:0.8em;">Growth happens at the <strong>edge</strong> of your ability.</p>
+    <div class="zone-container fragment" style="margin: 1em auto;" role="img" aria-label="Three concentric circles: comfort zone in the centre, stretch zone in the middle where growth happens, and panic zone on the outside.">
+      <div style="width:280px; height:280px; border-radius:50%; background:rgba(248,113,113,0.25); display:flex; align-items:center; justify-content:center; position:relative;">
+        <span class="zone-label panic-l" style="top:10px; right:20px;" aria-hidden="true">Panic zone</span>
+        <div style="width:200px; height:200px; border-radius:50%; background:rgba(74,222,128,0.25); display:flex; align-items:center; justify-content:center; position:relative;">
+          <span class="zone-label stretch-l" style="top:8px; right:5px;" aria-hidden="true">Stretch zone <span role="img" aria-label="sparkles">✨</span></span>
+          <div style="width:120px; height:120px; border-radius:50%; background:rgba(96,165,250,0.25); display:flex; align-items:center; justify-content:center;">
+            <span style="font-size:0.65em; font-weight:700; color:#60a5fa;" aria-hidden="true">Comfort<br>zone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fragment">
+      <p style="font-size:0.7em; color:#fff;">Too easy → boredom. Too hard → shutdown.<br>The <span style="color:var(--growth); font-weight:600;">stretch zone</span> is where mindset matters most.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>Vygotsky's Zone of Proximal Development. Csikszentmihalyi's flow.</li>
+        <li>If the challenge is right-sized, struggle feels productive rather than defeating.</li>
+        <li>This is where the growth mindset gives you permission to stay longer.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 9: PRAISE ============ -->
+  <section>
+    <h2>How praise shapes mindset</h2>
+    <div style="margin:1em 0;">
+      <div class="praise-example fragment">
+        <div class="label person">Person praise</div>
+        <div class="quote">"You're so <strong>smart</strong>!"</div>
+        <p style="font-size:0.7em; color:#fff; margin:0.3em 0 0;">→ Kids chose easier tasks, lied about scores, collapsed at difficulty</p>
+      </div>
+      <div class="praise-example fragment">
+        <div class="label process">Process praise</div>
+        <div class="quote">"You worked really <strong>hard</strong> on that strategy!"</div>
+        <p style="font-size:0.7em; color:#fff; margin:0.3em 0 0;">→ Kids chose harder tasks, persisted, improved</p>
+      </div>
+    </div>
+    <div class="fragment">
+      <p style="font-size:0.75em;"><strong>One sentence of praise</strong> shifted children's mindset and behaviour.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>The study: children did puzzles, then received either person praise or process praise.</li>
+        <li>On the next task, "smart" kids avoided challenge. "Hard-working" kids sought it.</li>
+        <li>This applies to how we talk to ourselves too — internal validation follows the same pattern.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 10a: GENIUS MYTH — THE PATTERN ============ -->
+  <section>
+    <h2>The "genius" myth</h2>
+    <p style="font-size:0.85em;">We don't apply praise equally. There's a gendered pattern:</p>
+    <div class="two-col" style="margin-top:1.2em;">
+      <div class="card fragment" style="padding:1.2em; border-top:4px solid #60a5fa;">
+        <h3 style="color:#60a5fa; margin:0 0 0.5em;">Boys</h3>
+        <p style="font-size:0.8em; margin:0; color:#fff;">Success → <strong>"He's a natural"</strong><br>Failure → "He didn't try hard enough"</p>
+        <p style="font-size:0.8em; margin:0.6em 0 0; color:#fff;">Ability is assumed. Effort explains the gap.</p>
+      </div>
+      <div class="card fragment" style="padding:1.2em; border-top:4px solid var(--accent);">
+        <h3 style="color:var(--accent); margin:0 0 0.5em;">Girls</h3>
+        <p style="font-size:0.8em; margin:0; color:#fff;">Success → <strong>"She worked so hard"</strong><br>Failure → "She's just not got it"</p>
+        <p style="font-size:0.8em; margin:0.6em 0 0; color:#fff;">Effort is assumed. Ability is in question.</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>The genius myth: the belief that success comes from innate brilliance rather than effort and strategy.</li>
+        <li>Teachers, parents, and children themselves show this pattern.</li>
+        <li>Boys' successes attributed to ability, failures to lack of effort (protects self-image).</li>
+        <li>Girls' successes attributed to effort, failures to lack of ability (erodes self-image).</li>
+        <li>This is not about actual ability — it's about the story we tell about where ability comes from.</li>
+        <li>"Inspiration exists, but it has to find you working."</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 10b: GENIUS MYTH — CONSEQUENCES ============ -->
+  <section>
+    <h2>Consequences</h2>
+    <div class="fragment" style="margin-top:1em;">
+      <p style="font-size:0.85em;">By <strong>age 6</strong>, girls already associate "brilliance" with boys, not themselves.</p>
+      <p style="font-size:0.8em; color:#fff;">They begin to avoid activities described as being for children who are "really, really smart."</p>
+    </div>
+    <div class="fragment" style="margin-top:1.2em;">
+      <p style="font-size:0.85em;">Fields that prize <strong>"innate genius"</strong> have the largest gender gaps.</p>
+      <p style="font-size:0.8em; color:#fff;">STEM, philosophy, ...: where culture signals they don't belong.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>Bian, Leslie &amp; Cimpian (2017): by age 6, girls are less likely to believe members of their gender are "really, really smart" and start avoiding activities labelled as requiring brilliance.</li>
+        <li>Leslie et al. (2015): across 30 academic disciplines, the more a field prizes innate brilliance, the fewer women (and Black people) are in it.</li>
+        <li>Growth mindset directly counters this: if ability is built, not born, then effort is the path, not the consolation prize.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 11: VALIDATION ============ -->
+  <section>
+    <h2>External → Internal</h2>
+    <p style="font-size:0.8em;">Where does your validation come from?</p>
+    <div class="two-col" style="margin-top:1em;">
+      <div class="fragment">
+        <p style="font-size:0.7em; font-weight:600; color:var(--fixed);">External validation</p>
+        <p style="font-size:0.7em; color:#fff;">"Do they think I'm good enough?"<br>"Did I get the grade/promotion/like?"</p>
+        <p style="font-size:0.7em; color:#fff;">Fragile. You can't control it. It trains you to perform, not to learn.</p>
+      </div>
+      <div class="fragment">
+        <p style="font-size:0.7em; font-weight:600; color:var(--growth);">Internal validation</p>
+        <p style="font-size:0.7em; color:#fff;">"Did I improve?"<br>"Did I give honest effort?"<br>"What did I learn?"</p>
+        <p style="font-size:0.7em; color:#fff;">Durable. You own it. It trains you to grow.</p>
+      </div>
+    </div>
+    <div class="fragment" style="margin-top:1em;">
+      <p>Growth mindset = shifting the scoreboard inside.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>This is the self-talk connection. Fixed mindset people tend to seek external proof of worth.</li>
+        <li>Growth mindset people build an internal compass.</li>
+        <li>Neither is absolute — we all need some external feedback — but the balance matters.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 12a: REWRITING TOOLKIT (1/2) ============ -->
+  <section>
+    <h2>Rewriting your story: a toolkit</h2>
+    <p style="font-size:0.8em; color:#fff;">When you hear yourself say <em>"I'm bad at X"</em>, try one of these:</p>
+    <aside class="notes">
+      <p>These are concrete moves, not just positive thinking. Each one disrupts the fixed-mindset loop differently:</p>
+      <ul>
+        <li>"Yet" opens a timeline.</li>
+        <li>"Get specific" breaks a vague identity into a trainable skill.</li>
+        <li>"Blame strategy" separates self-worth from method.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 12b: REWRITING TOOLKIT (2/2) ============ -->
+  <section>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8em; margin-top:1em; text-align:left;">
+      <div class="fragment card growth" style="padding:0.5em 1em;">
+        <h3 style="color:var(--growth); font-size:0.7em; margin:0 0 0.3em;">Add "yet"</h3>
+        <p style="font-size:0.75em; margin:0; color:#fff;">"I haven't got the hang of this <strong>yet</strong>"</p>
+      </div>
+      <div class="fragment card growth" style="padding:0.5em 1em;">
+        <h3 style="color:var(--growth); font-size:0.7em; margin:0 0 0.3em;">Get specific</h3>
+        <p style="font-size:0.75em; margin:0; color:#fff;">"I tend to rush the opening — I can practise that part"</p>
+      </div>
+      <div class="fragment card growth" style="padding:0.5em 1em;">
+        <h3 style="color:var(--growth); font-size:0.7em; margin:0 0 0.3em;">Blame the strategy, not yourself</h3>
+        <p style="font-size:0.75em; margin:0; color:#fff;">"I haven't found the right approach <strong>for me</strong> yet"</p>
+      </div>
+      <div class="fragment card growth" style="padding:0.5em 1em;">
+        <h3 style="color:var(--growth); font-size:0.7em; margin:0 0 0.3em;">Trust the spiral</h3>
+        <p style="font-size:0.75em; margin:0; color:#fff;">"I've been here before and understood more each time"</p>
+      </div>
+      <div class="fragment card growth" style="padding:0.5em 1em;">
+        <h3 style="color:var(--growth); font-size:0.7em; margin:0 0 0.3em;">Find the smallest step</h3>
+        <p style="font-size:0.75em; margin:0; color:#fff;">"What's one tiny thing I could try this week?"</p>
+      </div>
+      <div class="fragment card growth" style="padding:0.5em 1em;">
+        <h3 style="color:var(--growth); font-size:0.7em; margin:0 0 0.3em;">Shift the scoreboard</h3>
+        <p style="font-size:0.75em; margin:0; color:#fff;">"Am I better at this than six months ago?"</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>"Spiral" normalises revisiting.</li>
+        <li>"Smallest step" defeats overwhelm.</li>
+        <li>"Shift scoreboard" moves from external comparison to internal progress.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 12: BOOKEND — REVISIT ============ -->
+  <section>
+    <div class="reflect-prompt">
+      <h3><span role="img" aria-label="repeat">🔁</span> Remember what you submitted?</h3>
+      <p>"Something you find difficult that gets in your way day to day"</p>
+    </div>
+    <div class="fragment" style="margin-top:1em;">
+      <p style="font-size:0.85em;">Pick a tool from the previous slide.<br><strong>Rewrite your answer.</strong></p>
+    </div>
+    <div class="fragment" style="margin-top:0.8em;">
+      <p style="font-size:0.75em; color:#fff;">Take 30 seconds, then we'll hear a few — if you're willing.</p>
+    </div>
+    <aside class="notes">
+      <ul>
+        <li>This is the payoff. The same struggle from the start of the talk now has new language around it.</li>
+        <li>Press T for a 30-second timer.</li>
+        <li>Invite 2-3 volunteers to share their reframe — the contrast with the originals will be powerful.</li>
+        <li>If remote, people can type their reframe into the same Google Form / Slido / Mentimeter.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ SLIDE 13: CLOSING QUOTE ============ -->
+  <section>
+    <blockquote style="border:none; background:none; font-size:1.1em;">
+      Becoming is better than being.
+    </blockquote>
+    <p style="font-size:0.75em; color:#fff;">Carol Dweck (and others), <em>Mindset</em></p>
+    <aside class="notes">
+      <ul>
+        <li>End with a pause. Let the quote sit.</li>
+        <li>Optional: ask one person to share what they're taking away.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ============ APPENDIX: SOURCES (1/3) ============ -->
+  <section>
+    <h2>Sources (1/3)</h2>
+    <div style="text-align:left; max-width:900px; margin:0 auto;">
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Dweck, C. S.</strong> (2006). <em>Mindset: The New Psychology of Success.</em> Random House.
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Mueller, C. M. &amp; Dweck, C. S.</strong> (1998). Praise for intelligence can undermine children's motivation and performance. <em>Journal of Personality and Social Psychology, 75</em>(1), 33–52.
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Dweck, C. S.</strong> (2015). Carol Dweck revisits the "growth mindset." <em>Education Week, 35</em>(5), 20–24.
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Ebbinghaus, H.</strong> (1885). <em>Über das Gedächtnis</em> (Memory: A Contribution to Experimental Psychology). — spacing effect
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Bruner, J. S.</strong> (1960). <em>The Process of Education.</em> Harvard University Press. — spiral curriculum
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ APPENDIX: SOURCES (2/3) ============ -->
+  <section>
+    <h2>Sources (2/3)</h2>
+    <div style="text-align:left; max-width:900px; margin:0 auto;">
+       <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Vygotsky, L. S.</strong> (1978). <em>Mind in Society: The Development of Higher Psychological Processes.</em> Harvard University Press. — zone of proximal development
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Csikszentmihalyi, M.</strong> (1990). <em>Flow: The Psychology of Optimal Experience.</em> Harper &amp; Row. — flow &amp; right-sized challenge
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Moser, J. S. et al.</strong> (2011). Mind your errors: Evidence for a neural mechanism linking growth mindset to adaptive post-error adjustments. <em>Psychological Science, 22</em>(12), 1484–1489.
+      </p>
+    </div>
+  </section>
+
+    <!-- ============ APPENDIX: SOURCES (3/3) ============ -->
+  <section>
+    <h2>Sources (3/3)</h2>
+    <div style="text-align:left; max-width:900px; margin:0 auto;">
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Leslie, S.-J., Cimpian, A., Meyer, M. &amp; Freeland, E.</strong> (2015). Expectations of brilliance underlie gender distributions across academic disciplines. <em>Science, 347</em>(6219), 262–265. — genius myth &amp; gender gaps
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Bian, L., Leslie, S.-J. &amp; Cimpian, A.</strong> (2017). Gender stereotypes about intellectual ability emerge early and influence children's interests. <em>Science, 355</em>(6323), 389–391. — brilliance bias from age 6
+      </p>
+      <p style="font-size:0.7em; margin-bottom:0.6em;">
+        <strong>Dweck, C. S.</strong> <em>TED Talk.</em>
+        <a href="https://www.ted.com/talks/carol_dweck_the_power_of_believing_that_you_can_improve" style="word-break:break-all;"> (2014). The power of believing that you can improve.</a>
+      </p>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/plugin/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    plugins: [RevealNotes],
+    slideNumber: 'c/t',
+    showSlideNumber: 'speaker',
+    transition: 'slide',
+    transitionSpeed: 'default',
+    controlsTutorial: false,
+    progress: true,
+    center: true,
+    width: 1200,
+    height: 700,
+    totalTime: 1200,
+
+    // Keyboard shortcuts for interactive moments
+    keyboard: {
+      // Press 'T' to start/stop a visible timer
+      84: () => {
+        const timer = document.getElementById('timer-overlay');
+        if (timer) { timer.remove(); return; }
+        const el = document.createElement('div');
+        el.id = 'timer-overlay';
+        el.style.cssText = 'position:fixed;top:20px;right:20px;background:rgba(0,0,0,0.8);color:#fff;padding:12px 20px;border-radius:8px;font-size:24px;z-index:9999;font-family:Inter,sans-serif;';
+        el.setAttribute('role', 'timer');
+        el.setAttribute('aria-live', 'polite');
+        el.setAttribute('aria-label', 'Countdown timer');
+        let seconds = 60;
+        el.textContent = '1:00';
+        document.body.appendChild(el);
+        const interval = setInterval(() => {
+          seconds--;
+          if (seconds < 0) { clearInterval(interval); el.remove(); return; }
+          el.textContent = `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`;
+          if (seconds <= 10) el.style.color = '#a8293b';
+        }, 1000);
+      }
+    }
+  });
+
+  // Interactive poll buttons
+  document.querySelectorAll('.poll-btn').forEach(btn => {
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('tabindex', '0');
+    const select = () => {
+      btn.parentElement.querySelectorAll('.poll-btn').forEach(b => {
+        b.classList.remove('selected');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('selected');
+      btn.setAttribute('aria-pressed', 'true');
+    };
+    btn.addEventListener('click', select);
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); }
+    });
+  });
+</script>
+</body>
+</html>
